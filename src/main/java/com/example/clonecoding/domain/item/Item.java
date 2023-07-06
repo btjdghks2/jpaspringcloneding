@@ -1,8 +1,11 @@
 package com.example.clonecoding.domain.item;
 
+import com.example.clonecoding.domain.Category;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -18,4 +21,9 @@ public abstract class Item {
     private String name;
     private int price;
     private int stockQuantity;
+
+    @ManyToMany(mappedBy = "items")
+    private List<Category> categoryies = new ArrayList<>();
+
+
 }
