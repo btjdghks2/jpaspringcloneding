@@ -15,18 +15,18 @@ public class ItemController {
 
     private final ItemService itemService;
 
-    @GetMapping("items/{itemId}/edit")
-    public String updateItemForm(@PathVariable("itemId") Long itemId, Model model) {
-        Book item = (Book) itemService.findOne(itemId);
-        BookForm form = new BookForm();
-        form.setId(item.getId());
-        form.setName(item.getName());
-        form.setPrice(item.getPrice());
-        form.setStockQuantity(item.getStockQuantity());
-        form.setAuthor(item.getAuthor());
-        form.setIsbn(item);
-
-        return "";
-    }
+//    @GetMapping("items/{itemId}/edit")
+//    public String updateItemForm(@PathVariable("itemId") Long itemId, Model model) {
+//        Book item = (Book) itemService.findOne(itemId);
+//        BookForm form = new BookForm();
+//        form.setId(item.getId());
+//        form.setName(item.getName());
+//        form.setPrice(item.getPrice());
+//        form.setStockQuantity(item.getStockQuantity());
+//        form.setAuthor(item.getAuthor());
+//        form.setIsbn(item);
+//
+//        return "";
+//    }
 
 }
