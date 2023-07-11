@@ -33,5 +33,6 @@ public class OrderRepository {
                 // .setFirstResult(100) 페이징 할때 쓰는거
                 .setMaxResults(1000) // 최대 1000건
                 .getResultList();
+        return resultList;
     }
 }

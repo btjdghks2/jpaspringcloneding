@@ -31,6 +31,7 @@ public class Order {
 
     private LocalDateTime orderDate; //주문시간
 
+    @Enumerated(EnumType.STRING)
     private OrderStatus status; // 주문상태
 
 
