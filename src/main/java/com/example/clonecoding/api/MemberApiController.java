@@ -3,11 +3,11 @@ package com.example.clonecoding.api;
 
 import com.example.clonecoding.domain.Member;
 import com.example.clonecoding.service.MemberService;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.hibernate.sql.Update;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -35,13 +35,32 @@ public class MemberApiController {
         return new CreateMemberResponse(id);
     }
 
+    @PutMapping("/api/v2/members/{id}")
+    public UpdateMemberResponse updateMemberV2(@PathVariable("id") Long id, @RequestBody @Valid UpdateMemberRequest request) {
+
+        memberService.update(id,request.getName()); // 서비스의 update 메소드를 불러옴
+        Member findMember = memberService.findOne(id); // 쿼리와 커맨드를 분리하기 위함, 유지보수하기 쉬워짐
+        return new UpdateMemberResponse(findMember.getId(), findMember.getName());
+
+    }
+
+
+    @Data
+    @AllArgsConstructor
+    static class UpdateMemberResponse {
+        private Long id;
+        private String name;
+    }
+
+    @Data
+    static class UpdateMemberRequest {
+        private String name;
+    }
 
     @Data
     static class CreateMemberRequest{
         private String name;
     }
-
-
 
     @Data
     static class CreateMemberResponse {
@@ -51,4 +70,6 @@ public class MemberApiController {
             this.id = id;
         }
     }
+
+
 }
