@@ -28,15 +28,15 @@ public class OrderSimpleController {
         return all;
     }
 
-    @GetMapping("api/v3/simple-orders")
-    public List<SimpleOrderDto> ordersV3() {
-        List<Order> order = orderRepository.findAllWithMemberDelivery();
-        List<SimpleOrderDto> result = order.stream()
-                .map(o -> new SimpleOrderDto(o))
-                .collect(Collectors.toList());
-
-        return result;
-    }
+//    @GetMapping("api/v3/simple-orders")
+//    public List<SimpleOrderDto> ordersV3() {
+//        List<Order> order = orderRepository.findAllWithMemberDelivery();
+//        List<SimpleOrderDto> result = order.stream()
+//                .map(o -> new SimpleOrderDto(o))
+//                .collect(Collectors.toList());
+//
+//        return result;
+//    }
 
     @Data
     static class SimpleOrderDto {
