@@ -6,6 +6,7 @@ import com.example.clonecoding.domain.OrderItem;
 import com.example.clonecoding.domain.OrderStatus;
 import com.example.clonecoding.repository.OrderRepository;
 import com.example.clonecoding.repository.OrderSearch;
+import com.example.clonecoding.repository.query.OrderFlatDto;
 import com.example.clonecoding.repository.query.OrderQueryDto;
 import com.example.clonecoding.repository.query.OrderQueryRepository;
 import lombok.Data;
@@ -102,6 +103,11 @@ public class OrderApiController {
     @GetMapping("/api/v5/orders")
     public List<OrderQueryDto> ordersV5() {
         return orderQueryRepository.findAllByDto_optimization();
+
+    }
+    @GetMapping("/api/v6/orders")
+    public List<OrderFlatDto> ordersV6() {
+        return orderQueryRepository.findAllByDto_flat();
 
     }
 
